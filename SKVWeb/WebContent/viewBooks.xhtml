@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui" xmlns:p="http://primefaces.org/ui">
+
+<!-- Library for books. With the use of PrimeFaces list all books to be able to
+	 select and loan one or more books at the same time. -->
+
+<h:head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+	<h:outputStylesheet name="css/layout.css" />
+	<h:outputStylesheet name="css/font-awesome.css" />
+	<title><ui:insert name="title" /> Böcker</title>
+</h:head>
+<h:body>
+	<ui:composition template="./template.xhtml">
+		<ui:define name="title">Böcker</ui:define>
+		<ui:define name="content">
+
+
+			<div class="container">
+				<h2>Bokhylla</h2>
+
+				<h:form id="form">
+					<p:growl id="msgs" showDetail="true" />
+					<p:dataTable id="böckerDT" var="book" value="#{bookDAOBean.books}"
+						selection="#{bookDAOBean.selectedBooks}" rowKey="#{book.id}"
+						style="margin-bottom:0">
+						<f:facet name="header">
+            Böcker
+        </f:facet>
+						<p:column selectionMode="multiple"
+							style="width:16px;text-align:center" />
+						<p:column headerText="Id">
+							<h:outputText value="#{book.id}" />
+						</p:column>
+						<p:column headerText="Author">
+							<h:outputText value="#{book.author}" />
+						</p:column>
+						<p:column headerText="Title">
+							<h:outputText value="#{book.title}" />
+						</p:column>
+						<p:column headerText="Isbn">
+							<h:outputText value="#{book.isbn}" />
+						</p:column>
+						<p:column headerText="Copies">
+							<h:outputText value="#{book.copies}" />
+						</p:column>
+						<!-- Not implemented yet. Button for borrowing books -->
+						<f:facet name="footer">
+							<p:commandButton process="böckerDT" icon="fa fa-book"
+								value="Låna" actionListener="#" />
+						</f:facet>
+					</p:dataTable>
+
+					<!-- If it's deemed necessary in the future, to give further information about the books,
+					 such as: pictures, short description, etc... -->
+					<p:dialog header="Book Info" widgetVar="bookDialog" modal="true"
+						showEffect="fade" hideEffect="fade" resizable="false">
+						<p:outputPanel id="bookDetail" style="text-align:center;">
+							<p:panelGrid columns="2"
+								rendered="#{not empty bookDAOBean.selectedBook}"
+								columnClasses="label,value">
+								<f:facet name="header">
+									<p:graphicImage name="" />
+								</f:facet>
+
+								<h:outputText value="Id:" />
+								<h:outputText value="#{bookDAOBean.selectedBook.id}" />
+
+								<h:outputText value="Author" />
+								<h:outputText value="#{bookDAOBean.selectedBook.author}" />
+
+								<h:outputText value="Title:" />
+								<h:outputText value="#{bookDAOBean.selectedBook.title}" />
+
+								<h:outputText value="Isbn" />
+								<h:outputText value="#{bookDAOBean.selectedBook.isbn}" />
+
+								<h:outputText value="Copies" />
+								<h:outputText value="#{bookDAOBean.selectedBook.copies}" />
+							</p:panelGrid>
+						</p:outputPanel>
+					</p:dialog>
+
+				</h:form>
+			</div>
+
+		</ui:define>
+	</ui:composition>
+</h:body>
+
+</html>
