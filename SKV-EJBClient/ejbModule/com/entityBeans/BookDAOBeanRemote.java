@@ -13,12 +13,12 @@ public interface BookDAOBeanRemote {
 	
 	public Book createBook(Book book);
 
-	public Book createBook(int id, String author, String isbn, String title, int copies);
+	public Book createBook(int id, String author, String title, String isbn, int copies);
 
 	public Book getBookById(int id);
 	public Book getBookByAuthor(String author);
-	public Book getBookByIsbn(String isbn);
 	public Book getBookByTitle(String title);
+	public Book getBookByIsbn(String isbn);
 	public Book getSelectedBook();
 	public List<Book> getSelectedBooks();
 	
