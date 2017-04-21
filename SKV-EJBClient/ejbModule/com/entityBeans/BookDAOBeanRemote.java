@@ -19,6 +19,9 @@ public interface BookDAOBeanRemote {
 	public Book getBookByAuthor(String author);
 	public Book getBookByIsbn(String isbn);
 	public Book getBookByTitle(String title);
-
+	public Book getSelectedBook();
+	public List<Book> getSelectedBooks();
+	
+	public ArrayList<Book> getBooks();
 	public List<Book> getAllBooks();
 }
