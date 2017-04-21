@@ -32,11 +32,11 @@ public class BookDAOBean implements BookDAOBeanRemote {
 	// Test list for books
 	// Contains: id, name of author, isbn number, name of book, number of copies. 
 	private static final ArrayList<Book> books = new ArrayList<Book>(Arrays.asList(
-			new Book(1, "Adams, Douglas", "9789176890035", "Liftarens guide till galaxen", 1),
-			new Book(2, "Jonasson, Jonas", "9789164232519", "Hundraåringen som klev ut genom fönstret och försvann", 2), 
-			new Book(3, "Niemi, Mikael", "9113007734", "Populärmusik från Vittula", 3),
-			new Book(4, "Berglin, Jan", "9170375747", "Bronto Berglin", 1),
-			new Book(5, "Hearn, Lian", "9163826372", "Över näktergalens golv", 1)));
+			new Book(1, "Adams, Douglas", "Liftarens guide till galaxen", "9789176890035", 1),
+			new Book(2, "Jonasson, Jonas", "Hundraåringen som klev ut genom fönstret och försvann", "9789164232519", 2), 
+			new Book(3, "Niemi, Mikael", "Populärmusik från Vittula", "9113007734", 3),
+			new Book(4, "Berglin, Jan", "Bronto Berglin", "9170375747", 1),
+			new Book(5, "Hearn, Lian", "Över näktergalens golv", "9163826372", 1)));
 	
 	@Inject
 	public BookDAOBean(){}
